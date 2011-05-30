@@ -46,50 +46,55 @@
 
  <target name="pdepend" description="Generate jdepend.xml and software metrics charts using PHP_Depend">
   <exec executable="pdepend">
-   <arg line="--jdepend-xml=${logsdir}/jdepend.xml
-              --jdepend-chart=${pdependdir}/dependencies.svg
-              --overview-pyramid=${pdependdir}/overview-pyramid.svg
-              ${source_comma_sep}" />
+   <arg value="--jdepend-xml=${logsdir}/jdepend.xml"/>
+   <arg value="--jdepend-chart=${pdependdir}/dependencies.svg"/>
+   <arg value="--overview-pyramid=${pdependdir}/overview-pyramid.svg"/>
+   <arg path="${source_comma_sep}"/>
   </exec>
  </target>
 
  <target name="phpmd" description="Generate pmd.xml using PHPMD">
   <exec executable="phpmd">
-   <arg line="${source_comma_sep}
-              xml
-              {phpmd_rules}
-              --reportfile ${logsdir}/pmd.xml" />
+   <arg path="${source_comma_sep}"/>
+   <arg value="xml"/>
+   <arg value="{phpmd_rules}"/>
+   <arg value="--reportfile"/>
+   <arg file="${logsdir}/pmd.xml"/>
   </exec>
  </target>
 
  <target name="phpcpd" description="Generate pmd-cpd.xml using PHPCPD">
   <exec executable="phpcpd">
-   <arg line="--log-pmd ${logsdir}/pmd-cpd.xml
-              ${source}" />
+   <arg value="--log-pmd"/>
+   <arg file="${logsdir}/pmd-cpd.xml"/>
+   <arg path="${source}"/>
   </exec>
  </target>
 
  <target name="phploc" description="Generate phploc.csv">
   <exec executable="phploc">
-   <arg line="--log-csv ${logsdir}/phploc.csv
-              ${source}" />
+   <arg value="--log-csv"/>
+   <arg file="${logsdir}/phploc.csv"/>
+   <arg path="${source}"/>
   </exec>
  </target>
 
  <target name="phpcs" description="Generate checkstyle.xml using PHP_CodeSniffer">
   <exec executable="phpcs">
-   <arg line="--report=checkstyle
-              --report-file=${logsdir}/checkstyle.xml
-              --standard={phpcs_rules}
-              ${source}" />
+   <arg value="--report=checkstyle"/>
+   <arg value="--report-file=${logsdir}/checkstyle.xml"/>
+   <arg value="--standard={phpcs_rules}"/>
+   <arg path="${source}"/>
   </exec>
  </target>
 
 {apidoc}
  <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
   <exec executable="phpcb">
-   <arg line="--log    ${logsdir}
-              --output ${code-browserdir}" />
+   <arg value="--log"/>
+   <arg path="${logsdir}"/>
+   <arg value="--output"/>
+   <arg path="${code-browserdir}"/>
   </exec>
  </target>
 

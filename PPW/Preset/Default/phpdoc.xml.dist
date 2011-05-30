@@ -1,6 +1,8 @@
  <target name="phpdoc" description="Generate API documentation using PHPDocumentor">
   <exec executable="phpdoc">
-   <arg line="--directory ${source}
-              --target    ${apidir}" />
+   <arg value="--directory"/>
+   <arg path="${source}"/>
+   <arg value="--target"/>
+   <arg path="${apidir}"/>
   </exec>
  </target>
